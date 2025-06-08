@@ -9,6 +9,9 @@ function App() {
 
   return (
     <>
+      <h1>
+        Magic: the Gathering Card Search
+      </h1>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -17,8 +20,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Magic: The Gathering Card Search</h1>
-      <div id='card-search-bar'>
+      <div className='search-bar'>
         <input type="text" placeholder='Search...'></input>
         <button id='search-submit-button'>Search</button>
       </div>
