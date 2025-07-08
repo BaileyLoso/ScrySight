@@ -1,16 +1,20 @@
 // @ts-check
- /* Functions used to fetch data from the Scryfall API*/
-let url: string = 'https://api.scryfall.com';
+/* Functions used to fetch data from the Scryfall API*/
+const url: string = "https://api.scryfall.com";
 
-export async function cardSearch(input: string): Promise<void> {
+export default async function cardSearch(input: string): Promise<any> {
   try {
-    const encodedInput = encodeURIComponent(input.trim());
-    const formattedInput = encodedInput.replace(/%22/g, '"').replace(/%20/g, '+');
-    console.log(formattedInput);
-    const response = await fetch(`${url}/cards/search?q=${encodeURIComponent(formattedInput)}`);
+    const formattedInput = input.trim().replace(/ /g, "+");
+    const encodedInput = encodeURIComponent(formattedInput).replace(
+      /%22/g,
+      '"'
+    );
+    const response = await fetch(`${url}/cards/search?q=${encodedInput}`);
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (error) {
-    console.log('Error searching for card data: ', error);
+    console.log("Error searching for card data: ", error);
+    throw error;
   }
 }
