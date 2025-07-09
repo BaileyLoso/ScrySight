@@ -4,20 +4,21 @@ import cardSearch from "../services/scryfall.ts";
 type SearchBarProps = {
   readonly inputText: string;
   readonly setInputText: (value: string) => void;
-  readonly searchResults: never[];
   readonly setResults: React.Dispatch<React.SetStateAction<never[]>>;
+  readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export function SearchBar({
+export default function SearchBar({
   inputText,
   setInputText,
-  searchResults,
   setResults,
+  setDisplay,
 }: SearchBarProps): JSX.Element {
   async function handleSearch() {
     try {
       const data = await cardSearch(inputText);
       setResults(data.data || []);
+      setDisplay(1);
     } catch (error) {
       setResults([]);
       console.log(`Exception while searching for card ${error}`);
