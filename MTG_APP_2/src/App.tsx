@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { Card } from "./types";
 import SearchBar from "./components/SearchBar";
 import SearchScreen from "./components/SearchScreen";
 import ResultsScreen from "./components/ResultsScreen";
@@ -6,7 +7,7 @@ import "./styles/App.css";
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Card[]>([]);
   const [display, setDisplay] = useState(0);
   return display === 0 ? (
     <SearchScreen
@@ -16,7 +17,7 @@ function App() {
       setDisplay={setDisplay}
     />
   ) : (
-    <ResultsScreen />
+    <ResultsScreen results={results} setDisplay={setDisplay} />
   );
 }
 

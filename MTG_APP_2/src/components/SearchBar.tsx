@@ -1,16 +1,21 @@
 import React, { type JSX } from "react";
+import type { Card } from "../types";
 import cardSearch from "../services/scryfall.ts";
+
+// TODO: Fix setResults() function. Results is an empty array after setResults is called.
 
 type SearchBarProps = {
   readonly inputText: string;
   readonly setInputText: (value: string) => void;
-  readonly setResults: React.Dispatch<React.SetStateAction<never[]>>;
+  readonly results: Card[];
+  readonly setResults: React.Dispatch<React.SetStateAction<Card[]>>;
   readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function SearchBar({
   inputText,
   setInputText,
+  results,
   setResults,
   setDisplay,
 }: SearchBarProps): JSX.Element {
@@ -18,6 +23,7 @@ export default function SearchBar({
     try {
       const data = await cardSearch(inputText);
       setResults(data.data || []);
+      console.log(results);
       setDisplay(1);
     } catch (error) {
       setResults([]);

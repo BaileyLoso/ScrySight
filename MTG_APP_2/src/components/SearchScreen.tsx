@@ -1,18 +1,22 @@
+import type { JSX } from "react";
+import type { Card } from "../types";
 import SearchBar from "./SearchBar";
 
 type SearchScreenProps = {
   readonly inputText: string;
   readonly setInputText: (value: string) => void;
-  readonly setResults: React.Dispatch<React.SetStateAction<never[]>>;
+  readonly results: Card[];
+  readonly setResults: React.Dispatch<React.SetStateAction<Card[]>>;
   readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function SearchScreen({
   inputText,
   setInputText,
+  results,
   setResults,
   setDisplay,
-}: SearchScreenProps) {
+}: SearchScreenProps): JSX.Element {
   return (
     <>
       <h1>Magic: the Card Search</h1>
@@ -20,6 +24,7 @@ export default function SearchScreen({
       <SearchBar
         inputText={inputText}
         setInputText={setInputText}
+        results={results}
         setResults={setResults}
         setDisplay={setDisplay}
       />

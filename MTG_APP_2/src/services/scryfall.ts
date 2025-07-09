@@ -10,9 +10,10 @@ export default async function cardSearch(input: string): Promise<any> {
       '"'
     );
     const response = await fetch(`${url}/cards/search?q=${encodedInput}`);
-    const data = await response.json();
-    console.log(data);
-    return data;
+    const jsonData = await response.json();
+    const cards = jsonData.data;
+    console.log(cards);
+    return cards;
   } catch (error) {
     console.log("Error searching for card data: ", error);
     throw error;
