@@ -12,10 +12,11 @@ export default function SearchResults({
   setDisplay,
 }: SearchResultsProps): JSX.Element {
   return (
-    <>
+    <div className="card-container">
+      <button onClick={() => setDisplay(0)}>&#128940;</button>
       {results.map((item) => (
         <Result card={item} key={item.id} />
       ))}{" "}
-    </>
+    </div>
   );
 }

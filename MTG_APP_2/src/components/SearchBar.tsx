@@ -22,7 +22,7 @@ export default function SearchBar({
   async function handleSearch() {
     try {
       const data = await cardSearch(inputText);
-      setResults(data.data || []);
+      setResults(data || []);
       console.log(results);
       setDisplay(1);
     } catch (error) {
