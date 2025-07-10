@@ -9,7 +9,7 @@ type resultProps = {
 export default function Result({ card, key }: resultProps): JSX.Element {
   return (
     <div key={key}>
-      {card.image_uris && <img src={card.image_uris.normal} alt={card.name} />}
+      {card.image_uris && <img src={card.image_uris.small} alt={card.name} />}
       <h2>{card.name}</h2>
     </div>
   );
