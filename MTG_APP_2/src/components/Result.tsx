@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import { useState, type JSX } from "react";
 import type { Card } from "../types";
 
 type resultProps = {
@@ -6,11 +6,33 @@ type resultProps = {
   readonly key: string;
 };
 
-export default function Result({ card, key }: resultProps): JSX.Element {
+export default function Result({ card }: resultProps): JSX.Element {
+  const [cardFace, setCardFace] = useState(0);
+  const hasCardFaces: boolean =
+    Array.isArray(card.card_faces) && card.card_faces.length > 0;
+
+  const image =
+    hasCardFaces && card.card_faces[cardFace].image_uris
+      ? card.card_faces[cardFace].image_uris.png
+      : card.image_uris?.png;
+
+  const name =
+    hasCardFaces && card.card_faces[cardFace].name
+      ? card.card_faces[cardFace].name
+      : card.name;
+
   return (
-    <div key={key}>
-      {card.image_uris && <img src={card.image_uris.small} alt={card.name} />}
-      <h2>{card.name}</h2>
+    <div className="result">
+      {image && <img src={image} alt={name} />}
+      <h2>{name}</h2>
+      {hasCardFaces && card.card_faces.length > 1 && (
+        <button
+          className="results-swap-button"
+          onClick={() => setCardFace(cardFace === 0 ? 1 : 0)}
+        >
+          &#8617;
+        </button>
+      )}
     </div>
   );
 }

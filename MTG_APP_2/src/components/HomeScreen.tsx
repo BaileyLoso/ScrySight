@@ -10,7 +10,7 @@ type SearchScreenProps = {
   readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function SearchScreen({
+export default function HomeScreen({
   inputText,
   setInputText,
   results,

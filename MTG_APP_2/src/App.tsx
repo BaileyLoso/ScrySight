@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Card } from "./types";
-import SearchBar from "./components/SearchBar";
-import SearchScreen from "./components/SearchScreen";
+import SearchBar from "./components/HomeScreen";
+import SearchScreen from "./components/HomeScreen";
 import ResultsScreen from "./components/ResultsScreen";
 import "./styles/App.css";
 

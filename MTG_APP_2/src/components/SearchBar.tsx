@@ -19,7 +19,8 @@ export default function SearchBar({
   setResults,
   setDisplay,
 }: SearchBarProps): JSX.Element {
-  async function handleSearch() {
+  async function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
     try {
       const data = await cardSearch(inputText);
       setResults(data || []);
@@ -31,16 +32,16 @@ export default function SearchBar({
     }
   }
   return (
-    <div className="search-bar">
+    <form className="search-bar" onSubmit={handleSearch}>
       <input
         type="search"
         placeholder="Search..."
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
       />
-      <button id="search-submit-button" onClick={handleSearch}>
+      <button id="search-submit-button" type="submit">
         Search
       </button>
-    </div>
+    </form>
   );
 }

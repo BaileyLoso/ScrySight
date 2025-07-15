@@ -12,9 +12,14 @@ export default function ResultsScreen({
   setDisplay,
 }: ResultsScreenProps): JSX.Element {
   return (
-    <div>
-      You have reached the Results Screen!
-      <SearchResults results={results} setDisplay={setDisplay} />
-    </div>
+    <>
+      <header>You have reached the Results Screen!</header>
+      <div className="results-screen">
+        <button className="results-screen-exit" onClick={() => setDisplay(0)}>
+          X
+        </button>
+        <SearchResults results={results} />
+      </div>
+    </>
   );
 }

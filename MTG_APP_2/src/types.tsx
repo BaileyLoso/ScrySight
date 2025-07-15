@@ -1,6 +1,7 @@
 export type Card = {
   id: string;
   name: string;
+
   image_uris?: {
     small: string;
     normal: string;
@@ -9,4 +10,5 @@ export type Card = {
     art_crop: string;
     border_crop: string;
   };
+  card_faces: Card[];
 };
