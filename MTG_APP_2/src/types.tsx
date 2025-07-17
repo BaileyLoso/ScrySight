@@ -11,4 +11,11 @@ export type Card = {
     border_crop: string;
   };
   card_faces: Card[];
+  oracle_text: string;
 };
+
+export enum Screen {
+  HOME = "home",
+  RESULTS = "results",
+  CARD_INFO = "card_info",
+}

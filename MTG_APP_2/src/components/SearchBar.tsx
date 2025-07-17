@@ -1,5 +1,6 @@
 import React, { type JSX } from "react";
 import type { Card } from "../types";
+import { Screen } from "../types";
 import cardSearch from "../services/scryfall.ts";
 
 // TODO: Fix setResults() function. Results is an empty array after setResults is called.
@@ -9,7 +10,7 @@ type SearchBarProps = {
   readonly setInputText: (value: string) => void;
   readonly results: Card[];
   readonly setResults: React.Dispatch<React.SetStateAction<Card[]>>;
-  readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
+  readonly setCurrScreen: React.Dispatch<React.SetStateAction<Screen>>;
 };
 
 export default function SearchBar({
@@ -17,7 +18,7 @@ export default function SearchBar({
   setInputText,
   results,
   setResults,
-  setDisplay,
+  setCurrScreen,
 }: SearchBarProps): JSX.Element {
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function SearchBar({
       const data = await cardSearch(inputText);
       setResults(data || []);
       console.log(results);
-      setDisplay(1);
+      setCurrScreen(Screen.RESULTS);
     } catch (error) {
       setResults([]);
       console.log(`Exception while searching for card ${error}`);

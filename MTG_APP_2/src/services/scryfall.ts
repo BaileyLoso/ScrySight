@@ -1,8 +1,10 @@
 // @ts-check
 /* Functions used to fetch data from the Scryfall API*/
+import type {Card} from "../types";
+
 const url: string = "https://api.scryfall.com";
 
-export default async function cardSearch(input: string): Promise<any> {
+export default async function cardSearch(input: string): Promise<Card[]> {
   try {
     const formattedInput = input.trim().replace(/ /g, "+");
     const encodedInput = encodeURIComponent(formattedInput).replace(
