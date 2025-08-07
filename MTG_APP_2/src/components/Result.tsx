@@ -23,8 +23,8 @@ export default function Result({
 
   const imageURI =
     isDoubleSided && card.card_faces[cardFace].image_uris
-      ? card.card_faces[cardFace].image_uris?.png
-      : card.image_uris?.png;
+      ? card.card_faces[cardFace].image_uris?.normal
+      : card.image_uris?.normal;
 
   const name =
     isDoubleSided && card.card_faces[cardFace].name

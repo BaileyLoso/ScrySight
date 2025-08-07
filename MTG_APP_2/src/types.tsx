@@ -12,7 +12,21 @@ export type Card = {
   };
   card_faces: Card[];
   oracle_text: string;
+  rulings_uri: string;
 };
+
+export type RulesResponse = {
+  object: string;
+  has_more: boolean;
+  data: RuleItem[];
+}
+
+export type RuleItem = {
+  object: string;
+  oracle_id: string;
+  published_at: string;
+  comment: string;
+}
 
 export enum Screen {
   HOME = "home",

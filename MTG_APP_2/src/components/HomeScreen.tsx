@@ -19,7 +19,7 @@ export default function HomeScreen({
                                      setCurrScreen,
                                    }: SearchScreenProps): JSX.Element {
   return (
-    <>
+    <div className="home-screen">
       <h1>Magic: the Card Search</h1>
       <h2>Powered by ScryfallAPI</h2>
       <SearchBar
@@ -29,6 +29,6 @@ export default function HomeScreen({
         setResults={setResults}
         setCurrScreen={setCurrScreen}
       />
-    </>
+    </div>
   );
 }

@@ -1,9 +1,22 @@
 
 #root {
     max-width: 1280px;
-    margin: 0;
-    /*padding: 2rem;*/
+    margin: 0 auto;
+    padding: 2rem;
     text-align: center;
+    align-content: center;
+}
+
+.home-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+    align-content: center;
 }
 
 .search-bar {
@@ -90,9 +103,9 @@
 
 .card-info {
     display: flex;
-    width: calc(100vw - 4rem); /* Most of the screen with 2rem margin on each side */
+    width: 100%;
     height: auto;
-    margin: 2rem;
+    margin: 2rem auto;
     padding: 2rem;
     background-color: #363636;
     border: 1px solid #303030;
@@ -129,4 +142,10 @@
     margin: 0;
     line-height: 1.6;
     color: #cccccc;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.16);
 }

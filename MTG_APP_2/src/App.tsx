@@ -26,19 +26,32 @@ function App() {
         );
       case Screen.RESULTS:
         return (
-          <ResultsScreen
-            results={results}
-            setCurrScreen={setCurrScreen}
-            setSelectedCardId={setSelectedCardId}
-          />
+          <>
+            <ResultsScreen
+              results={results}
+              setCurrScreen={setCurrScreen}
+              setSelectedCardId={setSelectedCardId}
+            />
+            <footer>The literal and graphical information presented on this site about Magic: The Gathering, including
+              card images and mana symbols, is copyright Wizards of the Coast, LLC. ScrySight is not produced by or
+              endorsed by Wizards of the Coast.
+            </footer>
+          </>
         );
       case Screen.CARD_INFO: {
         const selectedCard = results.find((card) => card.id === selectedCardId);
         return (
-          <CardInfo
-            card={selectedCard || results[0]}
-            setCurrScreen={setCurrScreen}
-          />
+          <>
+            <CardInfo
+              card={selectedCard || results[0]}
+              setCurrScreen={setCurrScreen}
+            />
+            <footer>The literal and graphical information presented on this site about Magic: The
+              Gathering, including
+              card images and mana symbols, is copyright Wizards of the Coast, LLC. ScrySight is not produced by or
+              endorsed by Wizards of the Coast.
+            </footer>
+          </>
         );
       }
       default:
