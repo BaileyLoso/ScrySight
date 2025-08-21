@@ -8,20 +8,28 @@ import "./styles/App.css";
 
 function App() {
   const [currScreen, setCurrScreen] = useState(Screen.HOME);
-  const [inputText, setInputText] = useState("");
   const [results, setResults] = useState<Card[]>([]);
   const [selectedCardId, setSelectedCardId] = useState("");
+
+  const handleSearchComplete = (searchResults: Card[]) => {
+    setResults(searchResults);
+    setCurrScreen(Screen.RESULTS);
+  }
+
+  const handleSearchError = (errorMessage: string) => {
+    setResults([]);
+    console.error(errorMessage);
+  }
 
   const renderScreen = () => {
     switch (currScreen) {
       case Screen.HOME:
         return (
           <HomeScreen
-            inputText={inputText}
-            setInputText={setInputText}
             setResults={setResults}
             setCurrScreen={setCurrScreen}
-            results={[]}
+            onSearchComplete={handleSearchComplete}
+            onSearchError={handleSearchError}
           />
         );
       case Screen.RESULTS:
@@ -31,6 +39,8 @@ function App() {
               results={results}
               setCurrScreen={setCurrScreen}
               setSelectedCardId={setSelectedCardId}
+              onSearchComplete={handleSearchComplete}
+              onSearchError={handleSearchError}
             />
             <footer>The literal and graphical information presented on this site about Magic: The Gathering, including
               card images and mana symbols, is copyright Wizards of the Coast, LLC. ScrySight is not produced by or

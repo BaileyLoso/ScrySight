@@ -3,17 +3,22 @@ import type {Card} from "../types";
 import {Screen} from "../types";
 import SearchResults from "./SearchResults";
 import ExitButton from "./ExitButton";
+import SearchBar from "./SearchBar.tsx";
 
 type ResultsScreenProps = {
   readonly results: Card[];
   readonly setCurrScreen: React.Dispatch<React.SetStateAction<Screen>>;
   readonly setSelectedCardId?: React.Dispatch<React.SetStateAction<string>>;
+  readonly onSearchComplete: (results: Card[]) => void;
+  readonly onSearchError: (errorMessage: string) => void;
 };
 
 export default function ResultsScreen({
                                         results,
                                         setCurrScreen,
                                         setSelectedCardId,
+                                        onSearchComplete,
+                                        onSearchError,
                                       }: ResultsScreenProps): JSX.Element {
 
   function handleCardSelect(cardId: string) {
@@ -33,7 +38,7 @@ export default function ResultsScreen({
   }
   return (
     <>
-      <header>You have reached the Results Screen!</header>
+      <SearchBar onSearchComplete={onSearchComplete} onSearchError={onSearchError}/>
       <div className="results-screen">
         <ExitButton setCurrScreen={setCurrScreen} displayValue={Screen.HOME}/>
         <SearchResults results={results} setSelectCard={handleCardSelect}/>
