@@ -22,8 +22,9 @@ This is a personal project where my goal was to learn about web development usin
 
 ## Getting Started
 
-After cloning the directory, run: 
+Requirements: [Node.js](https://nodejs.org/).
 ```
+git clone https://github.com/BaileyLoso/Scryfall.git
 npm install
 npm run dev
 ```
