@@ -2,7 +2,7 @@
 Quickly search for card details, rulings, and keyword definitions used in **Magic: The Gathering (MTG)**.  
 Powered by the [Scryfall API](https://scryfall.com/docs/api).
 
-<img src='resources/scryfall_demo.gif' alt='A gif showing basic functionality of the Scryfall web app.' width = 900>
+<img src='resources/scryfall-demo.gif' alt='A gif showing basic functionality of the Scryfall web app.' width = 900>
 
 ## Tech Stack
 - [React](https://react.dev/)
@@ -15,7 +15,7 @@ This is a personal project where my goal was to learn about web development usin
 ## Features
 - Card search by name or Scryfall's search syntax.
 - Display card art for each result.
-<img src='resources/scryfall_search.png' alt='Search results for "cat" from Scryfall' width="600"><br>
+<img src='resources/scryfall_search.png' alt='Search results for "cat" from Scryfall' width="600">
 - Support for double-sided cards.
 - Find rulings specific to each card.
 <img src='resources/scryfall_card_details.png' alt='A page showing card rulings for the double-faced card "Akoum Warrior"' width="600">
