@@ -1,36 +1,36 @@
-import React, { type JSX } from "react";
-import type { Card } from "../types";
+import React, {type JSX, useState} from "react";
+import type {Card} from "../types";
 import cardSearch from "../services/scryfall.ts";
 
 // TODO: Fix setResults() function. Results is an empty array after setResults is called.
 
 type SearchBarProps = {
-  readonly inputText: string;
-  readonly setInputText: (value: string) => void;
-  readonly results: Card[];
-  readonly setResults: React.Dispatch<React.SetStateAction<Card[]>>;
-  readonly setDisplay: React.Dispatch<React.SetStateAction<number>>;
+  readonly onSearchComplete: (results: Card[]) => void;
+  readonly onSearchError: (error: string) => void;
 };
 
 export default function SearchBar({
-  inputText,
-  setInputText,
-  results,
-  setResults,
-  setDisplay,
-}: SearchBarProps): JSX.Element {
+                                    onSearchComplete,
+                                    onSearchError,
+                                  }: SearchBarProps): JSX.Element {
+  const [inputText, setInputText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
+    if (!inputText.trim()) return;
+
     try {
+      setIsLoading(true);
       const data = await cardSearch(inputText);
-      setResults(data || []);
-      console.log(results);
-      setDisplay(1);
+      onSearchComplete(data || []);
     } catch (error) {
-      setResults([]);
-      console.log(`Exception while searching for card ${error}`);
+      onSearchError(`Exception while searching for card. ${error}`);
+    } finally {
+      setIsLoading(false);
     }
   }
+
   return (
     <form className="search-bar" onSubmit={handleSearch}>
       <input
@@ -38,9 +38,10 @@ export default function SearchBar({
         placeholder="Search..."
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
+        disabled={isLoading}
       />
-      <button id="search-submit-button" type="submit">
-        Search
+      <button id="search-submit-button" type="submit" disabled={isLoading || !inputText.trim()}>
+        {isLoading ? "Searching..." : "Search"}
       </button>
     </form>
   );
