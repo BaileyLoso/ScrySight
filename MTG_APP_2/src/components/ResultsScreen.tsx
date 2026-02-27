@@ -30,14 +30,19 @@ export default function ResultsScreen({
 
   if (!results || results.length === 0) {
     return (
-      <div className="results-screen">
-        <h1>No results found</h1>
-        <ExitButton setCurrScreen={setCurrScreen} displayValue={Screen.HOME}/>
-      </div>
+      <>
+        <header>ScrySight</header>
+        <SearchBar onSearchComplete={onSearchComplete} onSearchError={onSearchError}/>
+        <div className="results-screen">
+          <h1>No results found</h1>
+          <ExitButton setCurrScreen={setCurrScreen} displayValue={Screen.HOME}/>
+        </div>
+      </>
     )
   }
   return (
     <>
+      <header><h1>ScrySight</h1></header>
       <SearchBar onSearchComplete={onSearchComplete} onSearchError={onSearchError}/>
       <div className="results-screen">
         <ExitButton setCurrScreen={setCurrScreen} displayValue={Screen.HOME}/>

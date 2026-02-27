@@ -20,7 +20,7 @@ export default function HomeScreen({
 
   return (
     <div className="home-screen">
-      <h1>Magic: the Card Search</h1>
+      <h1>ScrySight</h1>
       <h2>Powered by ScryfallAPI</h2>
       <SearchBar
         onSearchComplete={onSearchComplete}
